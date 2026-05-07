@@ -8,14 +8,14 @@ interface DragItem {
   type: string;
 }
 
-interface DragAreaWrapperProps {
+interface DropAreaWrapperProps {
   index: number;
   children: React.ReactNode;
   isDraggedOneself: boolean;
   isAnyDragged: boolean;
 }
 
-const DragAreaWrapper = (props: DragAreaWrapperProps) => {
+const DropAreaWrapper = (props: DropAreaWrapperProps) => {
   const childrenRef = useRef<HTMLDivElement>(null);
   const [childHeight, setChildHeight] = useState(0);
 
@@ -110,4 +110,4 @@ const DragAreaWrapper = (props: DragAreaWrapperProps) => {
   );
 };
 
-export default DragAreaWrapper;
+export default DropAreaWrapper;

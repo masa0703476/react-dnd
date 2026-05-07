@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useDrag } from "react-dnd";
 
 import { DropResult, ItemTypes } from "./ItemTypes";
-import DragAreaWrapper from "./DropAreaWrapper";
+import DropAreaWrapper from "./DropAreaWrapper";
 
 const style = {
   border: "1px dashed gray",
@@ -85,13 +85,13 @@ export const Card: FC<CardProps> = ({
   drag(ref);
   return (
     <div ref={ref}>
-      <DragAreaWrapper
+      <DropAreaWrapper
         index={index}
         isAnyDragged={isAnyDragging}
         isDraggedOneself={isDragging}
       >
         <div style={{ ...style, opacity }}>{text}</div>
-      </DragAreaWrapper>
+      </DropAreaWrapper>
     </div>
   );
 };
