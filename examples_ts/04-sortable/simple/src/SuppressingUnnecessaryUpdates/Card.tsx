@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useDrag } from "react-dnd";
 
 import { DropResult, ItemTypes } from "./ItemTypes";
-import DragAreaWrapper from "./DragAreaWrapper";
+import DragAreaWrapper from "./DropAreaWrapper";
 
 const style = {
   border: "1px dashed gray",
