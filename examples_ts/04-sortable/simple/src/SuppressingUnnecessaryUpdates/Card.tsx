@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { useRef } from "react";
-import { useDrag, useDrop } from "react-dnd";
+import { useDrag } from "react-dnd";
 
 import { DropResult, ItemTypes } from "./ItemTypes";
 import DragAreaWrapper from "./DragAreaWrapper";
@@ -65,8 +65,16 @@ export const Card: FC<CardProps> = ({
         return;
       }
 
-      // Time to actually perform the action
-      moveCard(dragIndex, dropIndex);
+      // ドロップ位置を補正する
+      // - Bottom の場合は dropIndex の後ろに挿入するため +1
+      // - ただし、ドラッグ元が dropIndex より前にある場合は、
+      //   元の要素削除によってインデックスがひとつ前にずれるため -1
+      const hoverIndex =
+        dropIndex +
+        (position === "Bottom" ? 1 : 0) -
+        (dragIndex < dropIndex ? 1 : 0);
+
+      moveCard(dragIndex, hoverIndex);
     },
     collect: (monitor: any) => ({
       isDragging: monitor.isDragging(),
