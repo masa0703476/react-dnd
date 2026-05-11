@@ -46,7 +46,7 @@ export const Card: FC<CardProps> = ({
       const position = (monitor.getDropResult() as DropResult)?.Position;
 
       // ドロップエリア外の場合何もしない
-      if (!position || !dropIndex) {
+      if (!position || dropIndex === null || dropIndex === undefined) {
         return;
       }
 
