@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, CSSProperties } from "react";
+import React, { useRef, useState, CSSProperties, useEffect } from "react";
 import { useDrop } from "react-dnd";
 import { DropResult, ItemTypes } from "./ItemTypes";
 
@@ -66,12 +66,10 @@ const DropAreaWrapper = (props: DropAreaWrapperProps) => {
     position: "relative",
     paddingTop: isUpperOver ? `${childHeight}px` : undefined,
     paddingBottom: isBottomOver ? `${childHeight}px` : undefined,
+    // 自身がドラッグ開始された場合、元あった場所は非表示とするが
+    // 要素を返さないとDOM上から消えてしまうので高さ0で表示しておく
+    height: props.isDraggedOneself ? 0 : undefined,
   };
-
-  // 自身がドラッグ開始された場合、元あった場所は非表示
-  if (props.isDraggedOneself) {
-    return <></>;
-  }
 
   return (
     <div style={wrapperStyle}>
